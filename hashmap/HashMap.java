@@ -74,7 +74,20 @@ public class HashMap<X,Y>
 		int hash = hashValue(x);
 		if(hmap[hash] == null)
 			hmap[hash] = new LinkedList<>();
-		hmap[hash].add(new SingleMap(x,y));
+		int flag = 0;
+		for(SingleMap<X,Y> temp: hmap[hash])
+		{
+			if(temp.compareKey(x))
+			{
+				temp.value = y;
+				flag = 1;
+			}
+		}
+		if(flag==0)
+		{
+			hmap[hash].add(new SingleMap(x,y));
+			size++;
+		}
 	}
 	public Y get(X x)
 	{
@@ -97,8 +110,23 @@ public class HashMap<X,Y>
 		for(SingleMap<X,Y> temp: hmap[hash])
 		{
 			if(temp.compareKey(x))
+			{
 				hmap[hash].remove(i);
+				size--;
+			}
 			i++;
 		}
+	}
+	public boolean containsKey(X x)
+	{
+		int hash = hashValue(x);
+		if(hmap[hash]==null)
+			return false;
+		for(SingleMap<X,Y> temp: hmap[hash])
+		{
+			if(temp.compareKey(x))
+				return true;
+		}
+		return false;
 	}
 }
