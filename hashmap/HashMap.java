@@ -31,7 +31,7 @@ class SingleMap<X,Y>
 	{
 		return x.equals(y);
 	}*/
-	boolean compare(X x, X y)  //set default behaviour (javac cries if you dont)
+	boolean compare(X x, X y)  //I didnt need to overload
 	{
 		return x.equals(y);
 	}
