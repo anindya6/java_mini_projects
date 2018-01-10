@@ -13,5 +13,10 @@ public class test
 		hm.insert("nope","nothing ");
 		hm.insert("sakdka","ajhajskj ");
 		System.out.println("I got these: "+hm.get("Ssup")+hm.get("No way")+hm.get("Collide already")+hm.get("haha")+hm.get("nope")+hm.get("sakdka"));
+		hm.delete("haha");
+		System.out.println("I got these: "+hm.get("Ssup")+hm.get("No way")+hm.get("Collide already")+hm.get("haha")+hm.get("nope")+hm.get("sakdka"));
+		HashMap<Integer,String> hm2 = new HashMap<>(10,0.75);
+		hm2.insert(1,"hey");
+		System.out.println(hm2.get(1));
 	}
 }

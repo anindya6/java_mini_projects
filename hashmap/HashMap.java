@@ -88,4 +88,17 @@ public class HashMap<X,Y>
 		}
 		return null;
 	}
+	public void delete(X x)
+	{
+		int hash = hashValue(x);
+		if(hmap[hash]==null)
+			return;
+		int i=0;
+		for(SingleMap<X,Y> temp: hmap[hash])
+		{
+			if(temp.compareKey(x))
+				hmap[hash].remove(i);
+			i++;
+		}
+	}
 }
