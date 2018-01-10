@@ -9,33 +9,12 @@ class SingleMap<X,Y>
 		this.key = key;
 		this.value = value;
 	}
-	//overloaded equality functions
-	/*
-	boolean compare(float x, float y)
-	{
-		return x==y;
-	}
-	boolean compare(double x, double y)
-	{
-		return x==y;
-	}
-	boolean compare(int x, int y)
-	{
-		return x==y;
-	}
-	boolean compare(char x, char y)
-	{
-		return x==y;
-	}
-	boolean compare(String x, String y)
-	{
-		return x.equals(y);
-	}*/
-	boolean compare(X x, X y)  //I didnt need to overload
+	boolean compare(X x, X y)
 	{
 		return x.equals(y);
 	}
-	boolean compareMapKeys(SingleMap<X,Y> otherMap)
+	//overloaded compare functions, compare key or compare object
+	boolean compareKey(SingleMap<X,Y> otherMap)
 	{
 		return compare(key, otherMap.key);
 	}
