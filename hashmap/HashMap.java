@@ -30,7 +30,7 @@ class SingleMap<X,Y>
 	{
 		return x.equals(y);
 	}
-	boolean compare(X x, X y)
+	boolean compare(X x, X y)  //set default behaviour (javac cries if you dont)
 	{
 		return x.equals(y);
 	}
@@ -74,20 +74,16 @@ public class HashMap<X,Y>
 		int hash = hashValue(x);
 		if(hmap[hash] == null)
 			hmap[hash] = new LinkedList<>();
-		int flag = 0;
 		for(SingleMap<X,Y> temp: hmap[hash])
 		{
 			if(temp.compareKey(x))
 			{
 				temp.value = y;
-				flag = 1;
+				return;
 			}
 		}
-		if(flag==0)
-		{
-			hmap[hash].add(new SingleMap(x,y));
-			size++;
-		}
+		hmap[hash].add(new SingleMap(x,y));
+		size++;
 	}
 	public Y get(X x)
 	{
@@ -113,6 +109,7 @@ public class HashMap<X,Y>
 			{
 				hmap[hash].remove(i);
 				size--;
+				return;
 			}
 			i++;
 		}
@@ -128,5 +125,12 @@ public class HashMap<X,Y>
 				return true;
 		}
 		return false;
+	}
+	public void rehash()
+	{//this is where you rehash when the load factor is exceeded
+	}
+	public void keySet()
+	{
+	//I am tempted to use HashSet<X> for this, trying to figure out a less hacky way
 	}
 }
