@@ -10,6 +10,7 @@ class SingleMap<X,Y>
 		this.value = value;
 	}
 	//overloaded equality functions
+	/*
 	boolean compare(float x, float y)
 	{
 		return x==y;
@@ -29,7 +30,7 @@ class SingleMap<X,Y>
 	boolean compare(String x, String y)
 	{
 		return x.equals(y);
-	}
+	}*/
 	boolean compare(X x, X y)  //set default behaviour (javac cries if you dont)
 	{
 		return x.equals(y);
