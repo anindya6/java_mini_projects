@@ -40,7 +40,7 @@ public class HashMap<X,Y>
 		size = 0;
 		hmap = new List[c];
 	}
-	public int hashValue(X x)
+	private int hashValue(X x)
 	{
 		String temp = ""+x;
 		int hash = (temp.hashCode()%capacity);
@@ -106,7 +106,7 @@ public class HashMap<X,Y>
 		}
 		return false;
 	}
-	public void rehash()
+	private void rehash()
 	{//this is where you rehash when the load factor is exceeded
 	}
 	public void keySet()
