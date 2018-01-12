@@ -12,12 +12,13 @@ public class test
 		hm.insert("haha","1lolhad ");
 		hm.insert("nope","nothing ");
 		hm.insert("sakdka","ajhajskj ");
-		System.out.println("I got these: "+hm.get("Ssup")+hm.get("No way")+hm.get("Collide already")+hm.get("haha")+hm.get("nope")+hm.get("sakdka"));
+		System.out.println("I got these: "+hm.get("Ssup")+hm.get("No way")+hm.get("Collide already")+hm.get("haha")+hm.get("nope")+hm.get("sakdka")+":"+hm.keySet());
 		hm.delete("haha");
+		hm.delete("sakdka");
 		hm.insert("Ssup","no more! ");
 		System.out.println("I got these: "+hm.get("Ssup")+hm.get("No way")+hm.get("Collide already")+hm.get("haha")+hm.get("nope")+hm.get("sakdka")+":"+hm.containsKey("nope")+":"+hm.containsKey("lol"));
 		HashMap<Integer,String> hm2 = new HashMap<>(10,0.75);
 		hm2.insert(1,"hey");
-		System.out.println(hm2.get(1));
+		System.out.println(hm2.get(1)+":"+hm.keySet()+":"+hm2.keySet());
 	}
 }

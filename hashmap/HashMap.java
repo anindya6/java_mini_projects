@@ -30,6 +30,7 @@ class SingleMap<X,Y>
 public class HashMap<X,Y>
 {
 	List<SingleMap<X,Y>> [] hmap;
+	Set<X> keys;
 	int capacity;
 	double loadfactor;
 	int size;
@@ -39,6 +40,7 @@ public class HashMap<X,Y>
 		loadfactor = lf;
 		size = 0;
 		hmap = new List[c];
+		keys = new HashSet<>();
 	}
 	private int hashValue(X x)
 	{
@@ -63,6 +65,7 @@ public class HashMap<X,Y>
 			}
 		}
 		hmap[hash].add(new SingleMap(x,y));
+		keys.add(x);
 		size++;
 	}
 	public Y get(X x)
@@ -89,6 +92,7 @@ public class HashMap<X,Y>
 			{
 				hmap[hash].remove(i);
 				size--;
+				keys.remove(x);
 				return;
 			}
 			i++;
@@ -99,6 +103,10 @@ public class HashMap<X,Y>
 		int hash = hashValue(x);
 		if(hmap[hash]==null)
 			return false;
+		/*if maintain a set of keys, this will be faster, but I intend on doing keyset in a better way,
+		* so im not going to use this:
+		return keys.contains(x);
+		*/
 		for(SingleMap<X,Y> temp: hmap[hash])
 		{
 			if(temp.compareKey(x))
@@ -109,8 +117,9 @@ public class HashMap<X,Y>
 	private void rehash()
 	{//this is where you rehash when the load factor is exceeded
 	}
-	public void keySet()
+	public Set<X> keySet()
 	{
-	//I am tempted to use HashSet<X> for this, trying to figure out a less hacky way
+		//I am tempted to use HashSet<X> for this, trying to figure out a less hacky way
+		return keys;
 	}
 }
